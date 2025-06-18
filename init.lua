@@ -93,6 +93,9 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+-- "better" cursor
+vim.opt.guicursor = 'n:block-blinkwait700-blinkoff400-blinkon250'
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -103,6 +106,10 @@ vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.o.relativenumber = true
+
+-- number settings to make them relative
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -120,6 +127,16 @@ end)
 
 -- Enable break indent
 vim.o.breakindent = true
+
+-- change tab behaviour
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+-- change indentation
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 -- Save undo history
 vim.o.undofile = true
