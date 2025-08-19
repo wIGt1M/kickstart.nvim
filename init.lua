@@ -167,8 +167,9 @@ vim.o.splitbelow = true
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+vim.opt.listchars = { tab = '| ', trail = '·', nbsp = '␣' }
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
 
@@ -893,6 +894,7 @@ require('lazy').setup({
     },
   },
 
+  --[[
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -912,6 +914,19 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
+    end,
+  },
+  --]]
+
+  -- different colorscheme
+  {
+    'vague2k/vague.nvim',
+    config = function()
+      require('vague').setup { --{ transparent = true },
+        styles = { comments = { italic = false } },
+      }
+      vim.cmd.colorscheme 'vague'
+      vim.cmd.highlight 'statusline guibg=NONE'
     end,
   },
 
