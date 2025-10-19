@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- "better" cursor
 vim.opt.guicursor = 'n:block-blinkwait700-blinkoff400-blinkon250'
@@ -108,8 +108,8 @@ vim.o.number = true
 -- vim.o.relativenumber = true
 
 -- number settings to make them relative
-vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.o.nu = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -129,14 +129,14 @@ end)
 vim.o.breakindent = true
 
 -- change tab behaviour
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
 
 -- change indentation
-vim.opt.smartindent = true
-vim.opt.autoindent = true
+vim.o.smartindent = true
+vim.o.autoindent = true
 
 -- Save undo history
 vim.o.undofile = true
@@ -157,6 +157,9 @@ vim.o.timeoutlen = 300
 -- Configure how new splits should be opened
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+-- rounded borders for better readability
+vim.o.winborder = 'rounded'
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -203,10 +206,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -689,10 +692,12 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
+        hls = {},
+        -- elixirls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -894,15 +899,14 @@ require('lazy').setup({
     },
   },
 
-  --[[
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    config = function()
+    -- priority = 1000, -- Make sure to load this before all the other start plugins.
+    --[[config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
         styles = {
@@ -915,12 +919,13 @@ require('lazy').setup({
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
     end,
+    --]]
   },
-  --]]
 
-  -- different colorscheme
+  -- different colorscheme ----------
   {
     'vague2k/vague.nvim',
+    priority = 1000,
     config = function()
       require('vague').setup { --{ transparent = true },
         styles = { comments = { italic = false } },
@@ -930,6 +935,78 @@ require('lazy').setup({
     end,
   },
 
+  { 'rebelot/kanagawa.nvim' },
+
+  { 'catppuccin/nvim' },
+
+  { 'morhetz/gruvbox' },
+
+  { 'rose-pine/neovim' },
+
+  {
+    'neanias/everforest-nvim',
+    config = function()
+      require('everforest').setup {
+        background = 'medium',
+        ui_contrast = 'high',
+      }
+    end,
+  },
+
+  { 'tanvirtin/monokai.nvim' },
+
+  { 'cocopon/iceberg.vim' },
+
+  { 'akinsho/horizon.nvim' },
+
+  { 'tomasr/molokai' },
+
+  { 'sainnhe/sonokai' },
+
+  { 'sam4llis/nvim-tundra' },
+
+  { 'Mitch1000/backpack.nvim' },
+
+  { 'bluz71/vim-moonfly-colors' },
+
+  { 'uloco/bluloco.nvim' },
+  ----------------------------------
+  -- Colorscheme previewer
+  --[[
+  {
+    'zaldih/themery.nvim',
+    lazy = false,
+    config = function()
+      require('themery').setup {
+        themes = {
+          'tokyonight',
+          'tokyonight-night',
+          'tokyonight-storm',
+          'vague',
+          'kanagawa',
+          'kanagawa-dragon',
+          'kanagawa-wave',
+          'catppuccin',
+          'catppuccin-frappe',
+          'catppuccin-macchiato',
+          'gruvbox',
+          'rose-pine',
+          'rose-pine-moon',
+          'everforest',
+          'monokai',
+          'iceberg',
+          'horizon',
+          'molokai',
+          'sonokai',
+          'tundra',
+          'backpack',
+          'moonfly',
+        }, -- Your list of installed colorschemes.
+        livePreview = true, -- Apply theme while picking. Default to true.
+      }
+    end,
+  },
+  --]]
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
