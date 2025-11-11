@@ -38,7 +38,18 @@ return {
 
   { 'catppuccin/nvim' },
 
-  { 'morhetz/gruvbox' },
+  { 'sainnhe/gruvbox-material' },
+
+  --{ 'morhetz/gruvbox' },
+
+  {
+    'ellisonleao/gruvbox.nvim',
+    config = function()
+      require('gruvbox').setup {
+        contrast = 'hard',
+      }
+    end,
+  },
 
   { 'rose-pine/neovim' },
 

@@ -212,7 +212,9 @@ return {
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
-        hls = {},
+        hls = {
+          filetypes = { 'haskell', 'lhaskell', 'cabal' },
+        },
         -- elixirls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
