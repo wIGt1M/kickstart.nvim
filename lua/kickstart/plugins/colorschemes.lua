@@ -44,6 +44,10 @@ return {
 
   --{ 'morhetz/gruvbox' },
 
+  { 'scottmckendry/cyberdream.nvim' },
+
+  { 'thesimonho/kanagawa-paper.nvim' },
+
   {
     'ellisonleao/gruvbox.nvim',
     config = function()
@@ -52,6 +56,68 @@ return {
       }
     end,
   },
+
+  { 'w0ng/vim-hybrid' },
+
+  { 'sainnhe/sonokai' },
+
+  { 'yonatan-perel/lake-dweller.nvim' },
+
+  { 'filipjanevski/0x96f.nvim' },
+
+  { 'smit4k/shale.nvim' },
+
+  { 'dikiaap/minimalist' },
+
+  { 'axvr/photon.vim' },
+
+  { 'sainnhe/edge' },
+
+  { 'lunacookies/vim-colors-xcode' },
+
+  { 'embark-theme/vim' },
+
+  { 'metalelf0/jellybeans-nvim' },
+
+  { 'JoosepAlviste/palenightfall.nvim' },
+
+  { 'yazeed1s/oh-lucy.nvim' },
+
+  { 'armannikoyan/rusty' },
+
+  { 'Ardakilic/vim-tomorrow-night-theme' },
+
+  { 'datsfilipe/min-theme.nvim' },
+
+  { 'samharju/synthweave.nvim' },
+
+  { 'LunarVim/synthwave84.nvim' },
+
+  { 'lettertwo/laserwave.nvim' },
+
+  { 'RedsXDD/neopywal.nvim' },
+
+  { 'github-main-user/lytmode.nvim' },
+
+  { 'ydkulks/cursor-dark.nvim' },
+
+  { 'mrtazz/molokai.vim' },
+
+  { 'joshdick/onedark.vim' },
+
+  { 'NLKNguyen/papercolor-theme' },
+
+  { 'dracula/vim' },
+
+  { 'loctvl842/monokai-pro.nvim' },
+
+  { 'liuchengxu/space-vim-dark' },
+
+  { 'NTBBloodbath/doom-one.nvim' },
+
+  { 'colepeters/spacemacs-theme.vim' },
+
+  { 'GustavoPrietoP/doom-themes.nvim' },
 
   { 'rose-pine/neovim' },
 
