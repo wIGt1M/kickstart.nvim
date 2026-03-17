@@ -5,6 +5,8 @@
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- replace escape key with double h
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -36,6 +38,14 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+-- create half page up and half page down with centering
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move cursor down half page and center the cursor' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move cursor up half page and center the cursor' })
+
+-- create rebinds for next / previous matching pattern
+vim.keymap.set('n', 'n', 'nzz', { desc = 'Move cursor to next matching pattern and center the cursor' })
+vim.keymap.set('n', 'N', 'Nzz', { desc = 'Move cursor to previous matching pattern and center the cursor' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
