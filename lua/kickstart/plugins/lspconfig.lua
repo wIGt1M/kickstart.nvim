@@ -223,7 +223,17 @@ return {
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-        --
+        basedpyright = {
+          filetypes = { 'python' },
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCechkingMode = 'recommended',
+              },
+            },
+          },
+        },
+        ruff = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -257,6 +267,10 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'mypy', --
+        'ruff',
+        'basedpyright',
+        'black',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
