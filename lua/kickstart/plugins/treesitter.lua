@@ -7,7 +7,7 @@ return {
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
       -- ensure basic parser are installed
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' }
       require('nvim-treesitter').install(parsers)
 
       ---@param buf integer
@@ -35,6 +35,10 @@ return {
         end
       end
 
+      local ts_disabled = {
+        latex = true,
+      }
+
       local available_parsers = require('nvim-treesitter').get_available()
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
@@ -42,6 +46,10 @@ return {
 
           local language = vim.treesitter.language.get_lang(filetype)
           if not language then
+            return
+          end
+
+          if ts_disabled[language] then
             return
           end
 
