@@ -227,13 +227,16 @@ return {
           filetypes = { 'python' },
           settings = {
             basedpyright = {
+              disableOrganizeImports = true, -- keep only if ruff handles organize/sort for you
               analysis = {
-                typeCechkingMode = 'recommended',
+                typeCheckingMode = 'recommended',
+                autoImportCompletions = true,
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
               },
             },
           },
         },
-        ruff = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -267,10 +270,7 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'mypy', --
-        'ruff',
-        'basedpyright',
-        'black',
+        'ruff', -- linter for python
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

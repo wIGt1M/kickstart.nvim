@@ -23,7 +23,21 @@ return {
   },
 
   {
-    'vague2k/vague.nvim',
+    'vague-theme/vague.nvim',
+    priority = 1000,
+    config = function()
+      require('vague').setup {
+        styles = {
+          comments = { italic = false },
+        },
+        on_highlights = function(hl, colors)
+          hl.Pmenu = { fg = colors.fg }
+          hl.PmenuSel = { fg = colors.constant, bg = colors.line }
+          hl.PmenuBorder = { fg = colors.floatBorder }
+        end,
+      }
+      vim.cmd.highlight 'statusline guibg=NONE'
+    end,
     --[[
     priority = 1000,
     config = function()
@@ -44,109 +58,145 @@ return {
 
   --{ 'morhetz/gruvbox' },
 
-  { 'scottmckendry/cyberdream.nvim' },
-
   { 'thesimonho/kanagawa-paper.nvim' },
+
+  {
+    'rose-pine/neovim',
+    config = function()
+      require('rose-pine').setup {
+        styles = {
+          italic = false,
+          --transparency = true,
+        },
+      }
+    end,
+  },
 
   {
     'ellisonleao/gruvbox.nvim',
     config = function()
       require('gruvbox').setup {
-        contrast = 'hard',
+        contrast = '',
+        italic = {
+          strings = false,
+          emphasis = false,
+          commecnts = true,
+          operators = false,
+          folds = true,
+        },
       }
     end,
   },
 
-  { 'w0ng/vim-hybrid' },
+  --{
+  --  'neanias/everforest-nvim',
+  --  config = function()
+  --    require('everforest').setup {
+  --      background = 'medium',
+  --      ui_contrast = 'high',
+  --    }
+  --  end,
+  --},
 
-  { 'sainnhe/sonokai' },
+  {
+    'sainnhe/sonokai',
+    init = function()
+      vim.g.sonokai_style = 'andromeda'
+      vim.g.sonokai_diagnostic_text_highlight = 1
+      vim.g.sonokai_diadnostic_line_highlight = 1
+    end,
+  },
 
-  { 'yonatan-perel/lake-dweller.nvim' },
+  {
+    'sainnhe/everforest',
+    init = function()
+      vim.g.everforest_ui_contrast = 'high'
+      vim.g.everforest_diagnostic_text_highlight = 1
+      vim.g.everforest_diadnostic_line_highlight = 1
+    end,
+  },
 
-  { 'filipjanevski/0x96f.nvim' },
+  {
+    'sainnhe/edge',
+    init = function()
+      vim.g.edge_style = 'aura'
+      vim.g.edge_diagnostic_text_highlight = 1
+      vim.g.edge_diadnostic_line_highlight = 1
+    end,
+  },
 
-  { 'smit4k/shale.nvim' },
+  --{ 'w0ng/vim-hybrid' },
 
-  { 'dikiaap/minimalist' },
+  --{ 'yonatan-perel/lake-dweller.nvim' },
 
-  { 'axvr/photon.vim' },
+  --{ 'filipjanevski/0x96f.nvim' },
 
-  { 'sainnhe/edge' },
+  --{ 'smit4k/shale.nvim' },
+
+  --{ 'dikiaap/minimalist' },
+
+  --{ 'axvr/photon.vim' },
 
   { 'lunacookies/vim-colors-xcode' },
 
-  { 'embark-theme/vim' },
+  --{ 'embark-theme/vim' },
 
-  { 'metalelf0/jellybeans-nvim' },
+  --{ 'metalelf0/jellybeans-nvim' },
 
-  { 'JoosepAlviste/palenightfall.nvim' },
+  --{ 'JoosepAlviste/palenightfall.nvim' },
 
-  { 'yazeed1s/oh-lucy.nvim' },
+  --{ 'yazeed1s/oh-lucy.nvim' },
 
-  { 'armannikoyan/rusty' },
+  --{ 'armannikoyan/rusty' },
 
-  { 'Ardakilic/vim-tomorrow-night-theme' },
+  --{ 'Ardakilic/vim-tomorrow-night-theme' },
 
-  { 'datsfilipe/min-theme.nvim' },
+  --{ 'datsfilipe/min-theme.nvim' },
 
-  { 'samharju/synthweave.nvim' },
+  --{ 'samharju/synthweave.nvim' },
 
-  { 'LunarVim/synthwave84.nvim' },
+  --{ 'LunarVim/synthwave84.nvim' },
 
-  { 'lettertwo/laserwave.nvim' },
+  --{ 'lettertwo/laserwave.nvim' },
 
-  { 'RedsXDD/neopywal.nvim' },
+  --{ 'RedsXDD/neopywal.nvim' },
 
-  { 'github-main-user/lytmode.nvim' },
+  --{ 'github-main-user/lytmode.nvim' },
 
-  { 'ydkulks/cursor-dark.nvim' },
+  --{ 'ydkulks/cursor-dark.nvim' },
 
-  { 'mrtazz/molokai.vim' },
+  --{ 'mrtazz/molokai.vim' },
 
-  { 'joshdick/onedark.vim' },
+  --{ 'joshdick/onedark.vim' },
 
-  { 'NLKNguyen/papercolor-theme' },
+  --{ 'NLKNguyen/papercolor-theme' },
 
-  { 'dracula/vim' },
+  --{ 'dracula/vim' },
 
-  { 'loctvl842/monokai-pro.nvim' },
+  --{ 'loctvl842/monokai-pro.nvim' },
 
-  { 'liuchengxu/space-vim-dark' },
+  --{ 'liuchengxu/space-vim-dark' },
 
-  { 'NTBBloodbath/doom-one.nvim' },
+  --{ 'NTBBloodbath/doom-one.nvim' },
 
-  { 'colepeters/spacemacs-theme.vim' },
+  --{ 'colepeters/spacemacs-theme.vim' },
 
-  { 'GustavoPrietoP/doom-themes.nvim' },
+  --{ 'GustavoPrietoP/doom-themes.nvim' },
 
-  { 'rose-pine/neovim' },
+  --{ 'tanvirtin/monokai.nvim' },
 
-  {
-    'neanias/everforest-nvim',
-    config = function()
-      require('everforest').setup {
-        background = 'medium',
-        ui_contrast = 'high',
-      }
-    end,
-  },
+  --{ 'cocopon/iceberg.vim' },
 
-  { 'tanvirtin/monokai.nvim' },
+  --{ 'akinsho/horizon.nvim' },
 
-  { 'cocopon/iceberg.vim' },
+  --{ 'tomasr/molokai' },
 
-  { 'akinsho/horizon.nvim' },
+  --{ 'sam4llis/nvim-tundra' },
 
-  { 'tomasr/molokai' },
+  --{ 'Mitch1000/backpack.nvim' },
 
-  { 'sainnhe/sonokai' },
+  --{ 'bluz71/vim-moonfly-colors' },
 
-  { 'sam4llis/nvim-tundra' },
-
-  { 'Mitch1000/backpack.nvim' },
-
-  { 'bluz71/vim-moonfly-colors' },
-
-  { 'uloco/bluloco.nvim' },
+  --{ 'uloco/bluloco.nvim' },
 }
 -- vim: ts=2 sts=2 sw=2 et
